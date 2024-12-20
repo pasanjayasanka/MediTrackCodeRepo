@@ -1,9 +1,10 @@
-version: 0.2
+vversion: 0.2
 
 phases:
   install:
-    runtime-versions:
-      docker: 18
+    commands:
+      # Install Docker if needed (but this should usually not be necessary in CodeBuild)
+      - echo "Install phase skipped: Docker is preinstalled."
   build:
     commands:
       # Authenticate Docker to ECR
@@ -19,4 +20,5 @@ phases:
       - docker tag medi_track_patient:latest 225989377732.dkr.ecr.us-east-1.amazonaws.com/medi_track_patient:latest
 
       - docker push 225989377732.dkr.ecr.us-east-1.amazonaws.com/medi_track_patient:latest
+
 
